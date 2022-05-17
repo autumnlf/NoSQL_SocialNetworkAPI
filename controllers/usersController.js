@@ -30,6 +30,20 @@ module.exports = {
             .then((user) => res.json(user))
             .catch((err) => res.status(500).json(err));
     },
+    //update a user    
+    updateUser(req, res) {
+        Users.findByIdAndUpdate(
+            { _id: req.params.id },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        )
+            .then((user) =>
+                !user
+                    ? res.status(404).json({ message: 'No user found with that id!' })
+                    : res.json(user)
+            )
+            .catch((err) => res.status(500).json(err));
+    },
     // Delete a user
     deleteUser(req, res) {
         Users.findOneAndDelete({ _id: req.params.id })
