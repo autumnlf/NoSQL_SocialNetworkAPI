@@ -10,11 +10,14 @@
 
 ## Description
 ```
-For this homework assignment we are tasked with using MongoDB to build an API for a social network platform. The application should allow creation/deletion/updating of users, creation/deletion/updating of user thoughts, and creation/deletion of reactions to thoughts. Users will also have a friends list where friends can be added/removed.
+For this homework assignment we are tasked with using MongoDB to build an API for a social network
+platform. The application should allow creation/deletion/updating of users, creation/deletion/updating 
+of user thoughts, and creation/deletion of reactions to thoughts. Users will also have a friends list
+where friends can be added/removed.
 ```
 
 ### Acceptance Criteria:
-```md
+```
 GIVEN a social network API
 WHEN I enter the command to invoke the application
 THEN my server is started and the Mongoose models are synced to the MongoDB database
