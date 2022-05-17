@@ -1,11 +1,10 @@
-const { Schema, model, Types } = require('mongoose');
-const formatTime = require('../utils/index');
+const { Schema, model } = require('mongoose');
+const formatTime = { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
 
 const reactionsSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectID,
-            default: () => new Types.ObjectID(),
         },
         reactionBody: {
             type: String,
@@ -19,13 +18,14 @@ const reactionsSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: createdAtValue => formatTime(createdAtValue),
+            get: (createdAtValue) => createdAtValue.toLocaleDateString(undefined, formatTime)
         }
     },
     {
         toJSON: {
             getters: true,
         },
+        id: false,
     }
 );
 
@@ -40,7 +40,7 @@ const thoughtsSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: createdAtValue => formatTime(createdAtValue),
+            get: (createdAtValue) => createdAtValue.toLocaleDateString(undefined, formatTime)
         },
         username: {
             type: String,
